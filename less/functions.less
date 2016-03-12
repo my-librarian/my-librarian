@@ -1,0 +1,15 @@
+.center-it() {
+  max-width: 960px;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.button(@color) {
+  background-color: darken(@color, 10%);
+  padding: 5px 10px;
+  border-radius: 4px;
+
+  &:hover {
+    background-color: lighten(@color, 10%);
+  }
+}
