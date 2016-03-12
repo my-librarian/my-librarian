@@ -1,0 +1,67 @@
+html,
+body {
+  font-family: sans-serif;
+  font-size: 100%;
+}
+html,
+body,
+html *,
+body * {
+  box-sizing: border-box;
+  border: none;
+  padding: 0;
+  margin: 0;
+  outline: none;
+  color: inherit;
+}
+html a:link,
+body a:link,
+html a:visited,
+body a:visited,
+html a:active,
+body a:active,
+html a:hover,
+body a:hover,
+html a:focus,
+body a:focus {
+  color: inherit;
+  text-decoration: none;
+}
+html li,
+body li {
+  list-style: none;
+}
+header {
+  background-color: #f39c12;
+  color: #FFF;
+}
+header .content {
+  max-width: 960px;
+  width: 95%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+header .content .left {
+  flex-basis: 50%;
+  padding: 10px 0;
+}
+header .content .right {
+  flex-basis: 50%;
+}
+header .content .right ul {
+  text-align: right;
+}
+header .content .right ul li {
+  display: inline-block;
+}
+header .content .right ul li a {
+  background-color: #c87f0a;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+header .content .right ul li a:hover {
+  background-color: #f5b043;
+}
+/*# sourceMappingURL=master.css.map */
