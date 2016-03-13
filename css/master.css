@@ -64,4 +64,10 @@ header .content .right ul li a {
 header .content .right ul li a:hover {
   background-color: #f5b043;
 }
+main {
+  max-width: 960px;
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 25px;
+}
 /*# sourceMappingURL=master.css.map */
