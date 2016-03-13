@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>My Librarian</title>
-    <link rel="stylesheet" href="css/master.css">
+    <link rel="stylesheet" href="/css/master.css">
+    <script src="/js/jquery.js"></script>
   </head>
   <body>
     <header>
