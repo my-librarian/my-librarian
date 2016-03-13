@@ -31,6 +31,12 @@ html li,
 body li {
   list-style: none;
 }
+main {
+  max-width: 960px;
+  width: 95%;
+  margin: 0 auto;
+  padding-top: 25px;
+}
 header {
   background-color: #f39c12;
   color: #FFF;
@@ -60,14 +66,64 @@ header .content .right ul li a {
   background-color: #c87f0a;
   padding: 5px 10px;
   border-radius: 4px;
+  color: inherit;
 }
 header .content .right ul li a:hover {
   background-color: #f5b043;
 }
-main {
-  max-width: 960px;
-  width: 95%;
-  margin: 0 auto;
-  padding-top: 25px;
+.home form {
+  text-align: center;
+}
+.home form input[type=search] {
+  border: 1px solid #444;
+  width: 350px;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+.list {
+  width: 100%;
+}
+.list tr td,
+.list tr th {
+  padding: 5px;
+}
+.list tr:first-child {
+  background-color: #FF6F00;
+  color: #FFFFFF;
+}
+.list tr:nth-child(2n) {
+  background-color: #FFF3E0;
+}
+.list tr:nth-child(2n+3) {
+  background-color: #FFE0B2;
+}
+.list tr .accessno {
+  width: 15%;
+}
+.list tr .title {
+  width: 65%;
+}
+.list tr .actions {
+  width: 20%;
+  padding: 10px 5px;
+}
+.list tr .actions a.edit {
+  background-color: #3d8b40;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: inherit;
+  margin-right: 5px;
+}
+.list tr .actions a.edit:hover {
+  background-color: #6ec071;
+}
+.list tr .actions a.delete {
+  background-color: #ee3900;
+  padding: 2px 4px;
+  border-radius: 4px;
+  color: #ffffff;
+}
+.list tr .actions a.delete:hover {
+  background-color: #ff7e55;
 }
 /*# sourceMappingURL=master.css.map */

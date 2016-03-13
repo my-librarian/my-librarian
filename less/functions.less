@@ -4,12 +4,13 @@
   margin: 0 auto;
 }
 
-.button(@color) {
-  background-color: darken(@color, 10%);
-  padding: 5px 10px;
+.button(@bgcolor, @fcolor: inherit, @padding: 5px) {
+  background-color: darken(@bgcolor, 10%);
+  padding: @padding (@padding * 2);
   border-radius: 4px;
+  color: @fcolor;
 
   &:hover {
-    background-color: lighten(@color, 10%);
+    background-color: lighten(@bgcolor, 10%);
   }
 }
