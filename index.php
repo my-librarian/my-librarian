@@ -6,7 +6,7 @@ ini_set('display_errors', 1);
 include 'views/include/header.php';
 
 // set default view
-$view = 'index';
+$view = 'home';
 
 // if there's a view given and its not empty
 // get it as $view
