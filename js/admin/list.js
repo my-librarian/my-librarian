@@ -1,39 +1,37 @@
-$(function() {
+$(function () {
 
-  function createNode(element) {
+  function createNode(element, className, text) {
 
-    return $('<' + element + ' />');
+    return $('<' + element + ' />')
+      .html(text)
+      .addClass(className);
 
   }
 
-  function createLink(linkTo, linkText, className) {
+  function createBook(book) {
 
-    return createNode('a')
-      .attr('href', linkTo)
-      .html(linkText)
-      .addClass(className);
+    var accessno = createNode('div', 'accessno', book.accessno);
+    var title = createNode('div', 'title', book.title);
+    var actions = createNode('div', 'actions')
+      .append(
+        createNode('button', 'edit'),
+        createNode('button', 'delete')
+      );
+
+    return createNode('div', 'book').append(accessno, title, actions);
 
   }
 
   $.ajax({
     url: '/app_data/books/get-all.php',
     dataType: 'json',
-    success: function(books) {
+    success: function (books) {
 
-      var booksTable = $('.books');
+      var booksTable = $('.list .books');
 
-      books.forEach(function(book) {
+      books.forEach(function (book) {
 
-        var accessno = createNode('td').html(book.accessno);
-        var title = createNode('td').html(book.title);
-        var actions = createNode('td').append(
-          createLink('/admin/edit?id=' + book.id, 'Edit', 'edit'),
-          createLink('/admin/delete?id=' + book.id, 'Delete', 'delete')
-        ).addClass('actions');
-
-        var row = $('<tr />').append(accessno, title, actions);
-
-        booksTable.append(row);
+        booksTable.append(createBook(book));
 
       });
 
