@@ -1,44 +1,149 @@
 .list {
-  width: 100%;
 
-  tr {
-
-    td, th {
-      padding: 5px;
-    }
-
-    &:first-child {
-      background-color: #FF6F00;
-      color: #FFFFFF;
-    }
-
-    &:nth-child(2n) {
-      background-color: #FFF3E0;
-    }
-
-    &:nth-child(2n+3) {
-      background-color: #FFE0B2;
-    }
+  .header, .books .book {
+    display: flex;
+    align-items: center;
 
     .accessno {
-      width: 15%;
+      flex-basis: 100px;
     }
 
     .title {
-      width: 65%;
+      flex-grow: 1;
     }
 
     .actions {
-      width: 20%;
-      padding: 10px 5px;
+      flex-basis: 125px;
+      text-align: center;
+    }
+  }
 
-      a.edit {
-        .button(#4CAF50, @padding: 2px);
-        margin-right: 5px;
+  .header {
+    color: #9E9E9E;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+
+    .accessno, .title {
+      padding-left: 25px;
+    }
+
+    .title {
+      text-align: center;
+    }
+
+    .actions {
+      padding: 0 25px;
+    }
+  }
+
+  .books {
+    background-color: #FFFFFF;
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.25);
+
+    .book {
+      border-bottom: 1px solid #ECECEC;
+
+      .accessno, .title {
+        padding: 20px 0 20px 25px;
       }
 
-      a.delete {
-        .button(#FF5722, #FFF, 2px);
+      .accessno {
+        font-size: .9em;
+        color: #9E9E9E;
+      }
+
+      .title {
+        font-weight: bold;
+        cursor: pointer;
+      }
+
+      &:hover {
+
+        .title {
+          text-decoration: underline;
+        }
+
+        .actions button {
+          &.edit {
+            &:after, &:before {
+              border-right-color: #009688;
+              border-left-color: #009688;
+            }
+          }
+
+          &.delete {
+            &:after, &:before {
+              background-color: #96000E;
+            }
+          }
+        }
+      }
+
+      .actions {
+        padding: 0 25px;
+
+        button {
+          @size: 30px;
+          display: inline-block;
+          width: @size;
+          height: @size;
+          border-radius: 15px;
+          background: none;
+          transition: box-shadow .2s;
+          position: relative;
+          cursor: pointer;
+
+          &:hover {
+            box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28)
+          }
+
+          &:active {
+            box-shadow: 0 0 8px rgba(0, 0, 0, .18), 0 6px 12px rgba(0, 0, 0, .36);
+          }
+
+          &:after, &:before {
+            content: '';
+            position: absolute;
+            height: @size / 2;
+            top: @size / 4;
+          }
+
+          &.edit {
+            margin-right: 15px;
+            transform: rotate(45deg);
+
+            &:after, &:before {
+              border-bottom: 2px solid transparent;
+            }
+
+            &:before {
+              border-right: 2px solid #9E9E9E;
+              left: (@size / 2) - 2;
+            }
+
+            &:after {
+              border-left: 2px solid #9E9E9E;
+              right: (@size / 2) - 2;
+            }
+          }
+
+          &.delete {
+
+            &:after, &:before {
+              width: 2px;
+              left: (@size / 2) - 1;
+              background-color: #9E9E9E;
+            }
+
+            &:after {
+              transform: rotate(-45deg);
+            }
+
+            &:before {
+              transform: rotate(45deg);
+            }
+          }
+        }
       }
     }
   }
