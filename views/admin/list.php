@@ -1,14 +1,17 @@
-<table class="books list">
-  <tr>
-    <th class="accessno">
-      AccnNo
-    </th>
-    <th class="title">
+<section class="list">
+  <div class="header">
+    <div class="accessno">
+      AccnNo.
+    </div>
+    <div class="title">
       Title
-    </th>
-    <th class="actions">
+    </div>
+    <div class="actions">
       Actions
-    </th>
-  </tr>
-</table>
+    </div>
+  </div>
+  <div class="books">
+
+  </div>
+</section>
 <script src="/js/admin/list.js"></script>
