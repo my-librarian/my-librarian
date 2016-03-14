@@ -1,9 +1,10 @@
 @import (reference) "functions";
 
-@bg-color: #f39c12;
+@bg-color: #009688;
 
 header {
   background-color: @bg-color;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   color: #FFF;
 
   .content {
@@ -14,8 +15,15 @@ header {
 
     .left {
       flex-basis: 50%;
+      padding: 20px 0;
 
-      padding: 10px 0;
+      h1 {
+        font-weight: normal;
+      }
+
+      p {
+        font-size: 0.8em;
+      }
     }
 
     .right {
