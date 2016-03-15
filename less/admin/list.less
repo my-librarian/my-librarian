@@ -55,13 +55,13 @@
       .title {
         font-weight: bold;
         cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
       }
 
       &:hover {
-
-        .title {
-          text-decoration: underline;
-        }
 
         .actions button {
           &.edit {
@@ -92,6 +92,7 @@
           transition: box-shadow .2s;
           position: relative;
           cursor: pointer;
+          transform: rotate(45deg);
 
           &:hover {
             box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28)
@@ -110,7 +111,6 @@
 
           &.edit {
             margin-right: 15px;
-            transform: rotate(45deg);
 
             &:after, &:before {
               border-bottom: 2px solid transparent;
@@ -135,12 +135,8 @@
               background-color: #9E9E9E;
             }
 
-            &:after {
-              transform: rotate(-45deg);
-            }
-
             &:before {
-              transform: rotate(45deg);
+              transform: rotate(90deg);
             }
           }
         }
