@@ -1,3 +1,5 @@
+@import (reference) "../functions";
+
 .list {
 
   .header, .books .book {
@@ -83,61 +85,13 @@
         padding: 0 25px;
 
         button {
-          @size: 30px;
-          display: inline-block;
-          width: @size;
-          height: @size;
-          border-radius: 15px;
-          background: none;
-          transition: box-shadow .2s;
-          position: relative;
-          cursor: pointer;
-          transform: rotate(45deg);
-
-          &:hover {
-            box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28)
-          }
-
-          &:active {
-            box-shadow: 0 0 8px rgba(0, 0, 0, .18), 0 6px 12px rgba(0, 0, 0, .36);
-          }
-
-          &:after, &:before {
-            content: '';
-            position: absolute;
-            height: @size / 2;
-            top: @size / 4;
-          }
 
           &.edit {
-            margin-right: 15px;
-
-            &:after, &:before {
-              border-bottom: 2px solid transparent;
-            }
-
-            &:before {
-              border-right: 2px solid #9E9E9E;
-              left: (@size / 2) - 2;
-            }
-
-            &:after {
-              border-left: 2px solid #9E9E9E;
-              right: (@size / 2) - 2;
-            }
+            .action-button(@type: edit);
           }
 
           &.delete {
-
-            &:after, &:before {
-              width: 2px;
-              left: (@size / 2) - 1;
-              background-color: #9E9E9E;
-            }
-
-            &:before {
-              transform: rotate(90deg);
-            }
+            .action-button(@type: delete);
           }
         }
       }
