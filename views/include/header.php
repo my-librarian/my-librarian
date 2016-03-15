@@ -9,15 +9,15 @@
   <body>
     <header>
       <div class="content">
-        <div class="left">
+        <a class="left" href="/">
           <h1 class="title">My Librarian</h1>
           <p>
             Department of Sanskrit - RKMVC
           </p>
-        </div>
+        </a>
         <nav class="right">
           <ul>
-            <li><a href="login.php">Log In</a></li>
+            <li><a href="/admin/list">Log In</a></li>
           </ul>
         </nav>
       </div>
