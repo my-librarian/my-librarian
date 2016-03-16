@@ -8,6 +8,24 @@ $(function () {
 
   }
 
+  function deleteBook(id) {
+
+    $.ajax({
+      url: '/app_data/books/delete.php',
+      method: 'post',
+      data: {
+        id: id
+      },
+      success: function () {
+        $('#book-' + id).remove();
+      },
+      error: function () {
+        console.log("Failed to delete book");
+      }
+    })
+
+  }
+
   function createBook(book) {
 
     var accessno = createNode('div', 'accessno', book.accessno);
@@ -15,10 +33,14 @@ $(function () {
     var actions = createNode('div', 'actions')
       .append(
         createNode('button', 'edit'),
-        createNode('button', 'delete')
+        createNode('button', 'delete').click(function () {
+          deleteBook(book.id);
+        })
       );
 
-    return createNode('div', 'book').append(accessno, title, actions);
+    return createNode('div', 'book')
+      .attr('id', 'book-' + book.id)
+      .append(accessno, title, actions);
 
   }
 
