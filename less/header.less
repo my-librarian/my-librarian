@@ -1,9 +1,7 @@
 @import (reference) "functions";
 
-@bg-color: #009688;
-
 header {
-  background-color: @bg-color;
+  background-color: @theme-color;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
   color: #FFF;
 
@@ -36,7 +34,7 @@ header {
           display: inline-block;
 
           a {
-            .button(@bg-color);
+            .button(@theme-color);
           }
         }
       }
