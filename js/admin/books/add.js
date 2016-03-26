@@ -13,6 +13,15 @@ $(function () {
       author: $('.txt.author', form).val()
     };
 
+    var empty = Object.keys(data).find(function (key) {
+      return data[key] === '';
+    });
+
+    if (empty) {
+      form.addClass('error');
+      return null;
+    }
+
     $.ajax({
       url: '/app_data/books/add.php',
       method: 'post',
@@ -37,12 +46,28 @@ $(function () {
 
   }
 
-  form.submit(function (event) {
+  function showError(element, hasError) {
+    if (hasError) {
+      $(element).addClass('error');
+    } else {
+      $(element).removeClass('error');
+    }
+  }
 
-    event.preventDefault();
-    addBook();
-    return false;
+  $('.txt.accessno').blur(function () {
+    var value = this.value;
+    var found = listManager.books.find(function (book) {
+      return book.accessno === value;
+    });
+    showError(this, found);
   });
+
+  $('.txt.rackno').blur(function () {
+    this.value = this.value.toUpperCase();
+    showError(this, !/R-[0-9]{1,2}-[A-Z]-[0-9]{1,2}/.test(this.value));
+  });
+
+  form.submit(false);
 
   function closeForm() {
     $('.add').removeClass('active');
@@ -50,6 +75,7 @@ $(function () {
 
   function resetForm() {
     $('.reset').click();
+    $('.txt').removeClass('error');
   }
 
   $('.add-one').click(function () {
@@ -64,7 +90,10 @@ $(function () {
     $('.add').addClass('active');
   });
 
-  $('.cancel').click(closeForm);
+  $('.cancel').click(function () {
+    resetForm();
+    closeForm();
+  });
 
   $('.txt.adddate').datepicker({
     dateFormat: 'yy-mm-dd',
