@@ -36,6 +36,7 @@ $(function () {
         data.id = id;
 
         listManager.addBook(data);
+        listManager.books.push(data);
 
         resetForm();
 
@@ -45,7 +46,7 @@ $(function () {
 
       },
       error: function () {
-        console.log("Failed to create book");
+        console.log('Failed to create book');
       }
     });
 
@@ -77,6 +78,14 @@ $(function () {
       'Invalid rack number given, required in R-##-X-## format',
       !format.test(this.value)
     );
+  });
+
+  $('.txt.subject').autocomplete({
+    source: '/app_data/subject/get-all.php'
+  });
+
+  $('.txt.author').autocomplete({
+    source: '/app_data/author/get-all.php'
   });
 
   form.submit(false);
