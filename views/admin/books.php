@@ -39,5 +39,5 @@
   </div>
 </section>
 <script src="/js/admin/books/error-manager.js"></script>
-<script src="/js/admin/books/list.js"></script>
-<script src="/js/admin/books/add.js"></script>
+<script src="/js/admin/books/list-manager.js"></script>
+<script src="/js/admin/books/add-form-manager.js"></script>
