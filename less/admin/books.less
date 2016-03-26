@@ -2,7 +2,7 @@
 
 .list {
 
-  .add {
+  section.add, section.edit {
     margin-bottom: 25px;
 
     .add-book {
@@ -69,6 +69,7 @@
           }
 
           &.add-another,
+          &.save,
           &:hover {
             background-color: @theme-color;
             color: #FFFFFF;
@@ -84,6 +85,11 @@
       .errors {
         font-size: .8em;
         color: @error-color;
+
+        li {
+          padding-left: 10px;
+          margin-bottom: 10px;
+        }
       }
     }
 
