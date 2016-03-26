@@ -5,7 +5,7 @@
     </div>
     <form class="book" novalidate>
       <div class="txt-group">
-        <input type="text" class="txt accessno" placeholder="Accession No (#####)" maxlength="5">
+        <input type="text" class="txt accessno" placeholder="Accession No (#####)">
         <input type="text" class="txt rackno" placeholder="Rack No (R-##-X-##)">
         <input type="text" class="txt adddate" placeholder="Addition Date (YYYY-MM-DD)" readonly>
         <input type="text" class="txt title" placeholder="Book Title">
