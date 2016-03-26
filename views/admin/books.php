@@ -6,12 +6,13 @@
     <form class="book" novalidate>
       <div class="txt-group">
         <input type="text" class="txt accessno" placeholder="Accession No (#####)" maxlength="5">
-        <input type="text" class="txt rackno" placeholder="Rack No (X-##-X-##)">
+        <input type="text" class="txt rackno" placeholder="Rack No (R-##-X-##)">
         <input type="text" class="txt adddate" placeholder="Addition Date (YYYY-MM-DD)" readonly>
         <input type="text" class="txt title" placeholder="Book Title">
         <input type="text" class="txt subject" placeholder="Subject (type to search)">
         <input type="text" class="txt author" placeholder="Author (type to search)">
       </div>
+      <ul class="errors"></ul>
       <div class="btn-group">
         <button class="add-another">Add Another</button>
         <button class="add-one">Add</button>
@@ -37,5 +38,6 @@
 
   </div>
 </section>
+<script src="/js/admin/books/error-manager.js"></script>
 <script src="/js/admin/books/list.js"></script>
 <script src="/js/admin/books/add.js"></script>
