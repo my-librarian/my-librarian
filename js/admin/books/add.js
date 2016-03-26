@@ -4,6 +4,7 @@ $(function () {
 
   function addBook(done) {
 
+    var err = 'All fields are required';
     var data = {
       accessno: $('.txt.accessno', form).val(),
       rackno: $('.txt.rackno', form).val(),
@@ -12,13 +13,17 @@ $(function () {
       subject: $('.txt.subject', form).val(),
       author: $('.txt.author', form).val()
     };
-
     var empty = Object.keys(data).find(function (key) {
       return data[key] === '';
     });
 
     if (empty) {
-      form.addClass('error');
+      errorManager.addError(err);
+    } else {
+      errorManager.removeError(err);
+    }
+
+    if (errorManager.errors.length > 0) {
       return null;
     }
 
@@ -46,10 +51,12 @@ $(function () {
 
   }
 
-  function toggleErrorClass(element, hasError) {
+  function toggleErrorClass(element, error, hasError) {
     if (hasError) {
+      errorManager.addError(error);
       $(element).addClass('error');
     } else {
+      errorManager.removeError(error);
       $(element).removeClass('error');
     }
   }
@@ -59,12 +66,17 @@ $(function () {
     var found = listManager.books.find(function (book) {
       return book.accessno === value;
     });
-    toggleErrorClass(this, found);
+    toggleErrorClass(this, 'Access number already exists', found);
   });
 
   $('.txt.rackno').blur(function () {
     this.value = this.value.toUpperCase();
-    toggleErrorClass(this, !/R-[0-9]{1,2}-[A-Z]-[0-9]{1,2}/.test(this.value));
+    var format = /R-[0-9]{1,2}-[A-Z]-[0-9]{1,2}/;
+    toggleErrorClass(
+      this,
+      'Invalid rack number given, required in R-##-X-## format',
+      !format.test(this.value)
+    );
   });
 
   form.submit(false);
@@ -76,6 +88,7 @@ $(function () {
   function resetForm() {
     $('.reset').click();
     $('.txt').removeClass('error');
+    errorManager.removeAllErrors();
   }
 
   $('.add-one').click(function () {
