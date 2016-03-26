@@ -54,6 +54,7 @@ var listManager = {
       dataType: 'json',
       success: function (books) {
         books.forEach(listManager.addBook);
+        listManager.books = books;
       }
     });
   }
