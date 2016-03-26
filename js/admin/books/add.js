@@ -46,7 +46,7 @@ $(function () {
 
   }
 
-  function showError(element, hasError) {
+  function toggleErrorClass(element, hasError) {
     if (hasError) {
       $(element).addClass('error');
     } else {
@@ -59,12 +59,12 @@ $(function () {
     var found = listManager.books.find(function (book) {
       return book.accessno === value;
     });
-    showError(this, found);
+    toggleErrorClass(this, found);
   });
 
   $('.txt.rackno').blur(function () {
     this.value = this.value.toUpperCase();
-    showError(this, !/R-[0-9]{1,2}-[A-Z]-[0-9]{1,2}/.test(this.value));
+    toggleErrorClass(this, !/R-[0-9]{1,2}-[A-Z]-[0-9]{1,2}/.test(this.value));
   });
 
   form.submit(false);
