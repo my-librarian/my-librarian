@@ -13,11 +13,9 @@ var errorManager = {
     errorManager.showErrors();
   },
 
-  showErrors: function () {
-    $('ul.errors').html('');
-    errorManager.errors.forEach(function (error) {
-      $('ul.errors').append($('<li />').html(error));
-    });
+  removeAllErrors: function () {
+    errorManager.errors = [];
+    errorManager.showErrors();
   },
 
   removeError: function (err) {
@@ -31,9 +29,11 @@ var errorManager = {
     errorManager.showErrors();
   },
 
-  removeAllErrors: function () {
-    errorManager.errors = [];
-    errorManager.showErrors();
+  showErrors: function () {
+    $('ul.errors').html('');
+    errorManager.errors.forEach(function (error) {
+      $('ul.errors').append($('<li />').html(error));
+    });
   }
 
 };

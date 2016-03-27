@@ -8,7 +8,7 @@ if(isset($_GET['term'])) {
 }
 
 $query = "SELECT name FROM author $where";
-$result = mysqli_query($link, $query);
+$result = mysqli_query($link, $query) or http_response_code(500);
 $rows = [];
 
 while($row = mysqli_fetch_assoc($result)) {
