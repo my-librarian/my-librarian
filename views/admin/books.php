@@ -56,7 +56,7 @@ function getFields() {
 
   </div>
 </section>
-<script src="/js/admin/books/error-manager.js"></script>
+<script src="/js/error-manager.js"></script>
 <script src="/js/admin/books/list-manager.js"></script>
 <script src="/js/admin/books/form-manager.js"></script>
 <script src="/js/admin/books/add-form-manager.js"></script>
