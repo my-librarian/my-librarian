@@ -93,15 +93,14 @@
       }
     }
 
-    &.active {
-
+    &.active,
+    &.edit-mode {
       .add-book {
         display: none;
       }
-
-      .book {
-        display: block;
-      }
+    }
+    &.active .book {
+      display: block;
     }
   }
 
