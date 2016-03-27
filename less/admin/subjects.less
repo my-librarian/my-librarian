@@ -1,0 +1,94 @@
+@import (reference) "../functions";
+
+.subject-list {
+  .render-form(subject);
+
+  section.add, section.edit {
+
+    .subject .txt-group {
+
+      .name {
+        flex-basis: 100%;
+      }
+    }
+  }
+
+  .header, .subjects .subject {
+    display: flex;
+    align-items: center;
+
+    .name {
+      flex-grow: 1;
+    }
+
+    .actions {
+      flex-basis: 125px;
+      text-align: center;
+    }
+  }
+
+  .header {
+    color: #9E9E9E;
+    margin-bottom: 10px;
+    font-size: 0.8em;
+
+    .name {
+      padding-left: 25px;
+    }
+
+    .actions {
+      padding: 0 25px;
+    }
+  }
+
+  .subjects {
+    .surface-block();
+
+    .subject {
+      border-bottom: 1px solid #ECECEC;
+
+      .name {
+        padding: 20px 0 20px 25px;
+        font-weight: bold;
+        cursor: pointer;
+
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+
+      &:hover {
+
+        .actions button {
+          &.edit {
+            &:after, &:before {
+              border-right-color: @theme-color;
+              border-left-color: @theme-color;
+            }
+          }
+
+          &.delete {
+            &:after, &:before {
+              background-color: #96000E;
+            }
+          }
+        }
+      }
+
+      .actions {
+        padding: 0 25px;
+
+        button {
+
+          &.edit {
+            .action-button(@type: edit);
+          }
+
+          &.delete {
+            .action-button(@type: delete);
+          }
+        }
+      }
+    }
+  }
+}
