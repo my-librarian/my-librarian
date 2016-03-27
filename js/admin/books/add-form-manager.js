@@ -1,20 +1,87 @@
-$(function () {
+var addFormManager = {
 
-  var form = $('.add .book');
+  form: $('.add .book'),
 
-  function addBook(done) {
+  addBook: function (done) {
+
+    var book = addFormManager.validateBook();
+
+    if (book) {
+
+      $.ajax({
+        url: '/app_data/books/add.php',
+        method: 'post',
+        data: book,
+        success: function (id) {
+
+          book.id = id;
+
+          listManager.addBook(book);
+          listManager.books.push(book);
+
+          addFormManager.reset();
+
+          if (done) {
+            done();
+          }
+
+        },
+        error: function () {
+          console.log('Failed to create book');
+        }
+      });
+    }
+  },
+
+  cancel: function () {
+    $('section.add').removeClass('active');
+  },
+
+  cancelFormSubmit: function () {
+
+    addFormManager.form.submit(false);
+  },
+
+  bindAddButtons: function () {
+
+    $('.add-one', addFormManager.form).click(function () {
+      addFormManager.addBook(addFormManager.cancel);
+    });
+
+    $('.add-another', addFormManager.form).click(function () {
+      addFormManager.addBook();
+    });
+  },
+
+  bindCancelButton: function () {
+
+    $('.cancel', addFormManager.form).click(function () {
+      addFormManager.reset();
+      addFormManager.cancel();
+    });
+  },
+
+  bindResetButton: function () {
+
+    $('.reset', addFormManager.form).click(function () {
+      $('.txt').removeClass('error');
+      errorManager.removeAllErrors();
+    });
+  },
+
+  validateBook: function () {
 
     var err = 'All fields are required';
-    var data = {
-      accessno: $('.txt.accessno', form).val(),
-      rackno: $('.txt.rackno', form).val(),
-      adddate: $('.txt.adddate', form).val(),
-      title: $('.txt.title', form).val(),
-      subject: $('.txt.subject', form).val(),
-      author: $('.txt.author', form).val()
+    var book = {
+      accessno: $('.txt.accessno', addFormManager.form).val(),
+      rackno: $('.txt.rackno', addFormManager.form).val(),
+      adddate: $('.txt.adddate', addFormManager.form).val(),
+      title: $('.txt.title', addFormManager.form).val(),
+      subject: $('.txt.subject', addFormManager.form).val(),
+      author: $('.txt.author', addFormManager.form).val()
     };
-    var empty = Object.keys(data).find(function (key) {
-      return data[key] === '';
+    var empty = Object.keys(book).find(function (key) {
+      return book[key] === '';
     });
 
     if (empty) {
@@ -24,102 +91,28 @@ $(function () {
     }
 
     if (errorManager.errors.length > 0) {
-      return null;
+      return false;
     }
 
-    $.ajax({
-      url: '/app_data/books/add.php',
-      method: 'post',
-      data: data,
-      success: function (id) {
+    return book;
+  },
 
-        data.id = id;
+  reset: function () {
 
-        listManager.addBook(data);
-        listManager.books.push(data);
-
-        resetForm();
-
-        if (done) {
-          done();
-        }
-
-      },
-      error: function () {
-        console.log('Failed to create book');
-      }
-    });
-
+    $('.reset', addFormManager.form).click();
   }
 
-  function toggleErrorClass(element, error, hasError) {
-    if (hasError) {
-      errorManager.addError(error);
-      $(element).addClass('error');
-    } else {
-      errorManager.removeError(error);
-      $(element).removeClass('error');
-    }
-  }
+};
 
-  $('.txt.accessno').blur(function () {
-    var value = this.value;
-    var found = listManager.books.find(function (book) {
-      return book.accessno === value;
-    });
-    toggleErrorClass(this, 'Access number already exists', found);
-  });
+$(function () {
 
-  $('.txt.rackno').blur(function () {
-    this.value = this.value.toUpperCase();
-    var format = /R-[0-9]{1,2}-[A-Z]-[0-9]{1,2}/;
-    toggleErrorClass(
-      this,
-      'Invalid rack number given, required in R-##-X-## format',
-      !format.test(this.value)
-    );
-  });
-
-  $('.txt.subject').autocomplete({
-    source: '/app_data/subject/get-all.php'
-  });
-
-  $('.txt.author').autocomplete({
-    source: '/app_data/author/get-all.php'
-  });
-
-  form.submit(false);
-
-  function closeForm() {
-    $('.add').removeClass('active');
-  }
-
-  function resetForm() {
-    $('.reset').click();
-    $('.txt').removeClass('error');
-    errorManager.removeAllErrors();
-  }
-
-  $('.add-one').click(function () {
-    addBook(closeForm);
-  });
-
-  $('.add-another').click(function () {
-    addBook();
-  });
+  addFormManager.cancelFormSubmit();
+  addFormManager.bindAddButtons();
+  addFormManager.bindCancelButton();
+  addFormManager.bindResetButton();
 
   $('.add-book button').click(function () {
-    $('.add').addClass('active');
+    $('section.add').addClass('active');
   });
-
-  $('.cancel').click(function () {
-    resetForm();
-    closeForm();
-  });
-
-  $('.txt.adddate').datepicker({
-    dateFormat: 'yy-mm-dd',
-    maxDate: new Date()
-  })
 
 });

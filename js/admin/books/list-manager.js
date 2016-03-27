@@ -80,5 +80,8 @@ var listManager = {
 $(function () {
 
   listManager.getAllBooks();
+  formManager.bindAutocomplete();
+  formManager.bindDatePicker();
+  formManager.bindValidation();
 
 });

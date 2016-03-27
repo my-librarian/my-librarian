@@ -15,6 +15,7 @@ function getFields() {
 ?>
 
 <section class="list">
+
   <section class="add">
     <div class="add-book">
       <button>Add Book</button>
@@ -29,6 +30,7 @@ function getFields() {
       </div>
     </form>
   </section>
+
   <section class="edit">
     <form class="book" novalidate>
       <?php getFields(); ?>
@@ -42,7 +44,6 @@ function getFields() {
   <div class="header">
     <div class="accessno">
       AccnNo.
-
     </div>
     <div class="title">
       Title
@@ -57,5 +58,6 @@ function getFields() {
 </section>
 <script src="/js/admin/books/error-manager.js"></script>
 <script src="/js/admin/books/list-manager.js"></script>
+<script src="/js/admin/books/form-manager.js"></script>
 <script src="/js/admin/books/add-form-manager.js"></script>
 <script src="/js/admin/books/edit-form-manager.js"></script>
