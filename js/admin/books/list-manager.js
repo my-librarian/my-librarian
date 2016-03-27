@@ -41,6 +41,12 @@ var listManager = {
         id: id
       },
       success: function () {
+        var index = listManager.books.findIndex(function (book) {
+          return book.id === id;
+        });
+        if (index >= 0) {
+          listManager.books.splice(index, 1);
+        }
         $('#book-' + id).remove();
       },
       error: function () {
