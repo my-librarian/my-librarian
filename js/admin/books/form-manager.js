@@ -36,6 +36,7 @@ var formManager = {
       var value = event.target.value.toUpperCase();
       var format = /R-[0-9]{1,2}-[A-Z]-[0-9]{1,2}/;
 
+      event.target.value = value.toUpperCase();
       formManager.toggleErrorClass(
         this,
         'Invalid rack number given, required in R-##-X-## format',
@@ -53,6 +54,34 @@ var formManager = {
       errorManager.removeError(error);
       $(element).removeClass('error');
     }
+  },
+
+  validateBook: function (form) {
+
+    var err = 'All fields are required';
+    var book = {
+      accessno: $('.txt.accessno', form).val(),
+      rackno: $('.txt.rackno', form).val(),
+      adddate: $('.txt.adddate', form).val(),
+      title: $('.txt.title', form).val(),
+      subject: $('.txt.subject', form).val(),
+      author: $('.txt.author', form).val()
+    };
+    var empty = Object.keys(book).find(function (key) {
+      return book[key] === '';
+    });
+
+    if (empty) {
+      errorManager.addError(err);
+    } else {
+      errorManager.removeError(err);
+    }
+
+    if (errorManager.errors.length > 0) {
+      return false;
+    }
+
+    return book;
   }
 
 };

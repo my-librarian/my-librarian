@@ -1,10 +1,10 @@
 var addFormManager = {
 
-  form: $('.add .book'),
+  form: $('section.add .book'),
 
   addBook: function (done) {
 
-    var book = addFormManager.validateBook();
+    var book = formManager.validateBook(addFormManager.form);
 
     if (book) {
 
@@ -67,34 +67,6 @@ var addFormManager = {
       $('.txt').removeClass('error');
       errorManager.removeAllErrors();
     });
-  },
-
-  validateBook: function () {
-
-    var err = 'All fields are required';
-    var book = {
-      accessno: $('.txt.accessno', addFormManager.form).val(),
-      rackno: $('.txt.rackno', addFormManager.form).val(),
-      adddate: $('.txt.adddate', addFormManager.form).val(),
-      title: $('.txt.title', addFormManager.form).val(),
-      subject: $('.txt.subject', addFormManager.form).val(),
-      author: $('.txt.author', addFormManager.form).val()
-    };
-    var empty = Object.keys(book).find(function (key) {
-      return book[key] === '';
-    });
-
-    if (empty) {
-      errorManager.addError(err);
-    } else {
-      errorManager.removeError(err);
-    }
-
-    if (errorManager.errors.length > 0) {
-      return false;
-    }
-
-    return book;
   },
 
   reset: function () {
