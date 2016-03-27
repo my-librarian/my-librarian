@@ -1,6 +1,9 @@
+@import "functions";
+
 html, body {
   font-family: sans-serif;
   font-size: 100%;
+  background-color: #E5E5E5;
 
   &, & * {
     box-sizing: border-box;
@@ -27,5 +30,11 @@ html, body {
   }
 }
 
-@import "functions";
+main {
+  .center-it();
+  padding: 25px 0;
+}
+
 @import "header";
+@import "home";
+@import "admin/books";

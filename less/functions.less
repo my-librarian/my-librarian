@@ -1,15 +1,84 @@
+@theme-color: #009688;
+@error-color: #90000E;
+
 .center-it() {
   max-width: 960px;
   width: 95%;
   margin: 0 auto;
 }
 
-.button(@color) {
-  background-color: darken(@color, 10%);
-  padding: 5px 10px;
+.button(@bgcolor, @fcolor: inherit, @padding: 5px) {
+  background-color: darken(@bgcolor, 10%);
+  padding: @padding (@padding * 2);
   border-radius: 4px;
+  color: @fcolor;
 
   &:hover {
-    background-color: lighten(@color, 10%);
+    background-color: lighten(@bgcolor, 10%);
   }
+}
+
+.action-button-base(@size) {
+  display: inline-block;
+  width: @size;
+  height: @size;
+  border-radius: 15px;
+  background: none;
+  transition: box-shadow .2s;
+  position: relative;
+  cursor: pointer;
+  transform: rotate(45deg);
+
+  &:hover {
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 0 4px 8px rgba(0, 0, 0, .28)
+  }
+
+  &:active {
+    box-shadow: 0 0 8px rgba(0, 0, 0, .18), 0 6px 12px rgba(0, 0, 0, .36);
+  }
+
+  &:after, &:before {
+    content: '';
+    position: absolute;
+    height: @size / 2;
+    top: @size / 4;
+  }
+}
+
+.action-button(@type, @color: #9E9E9E, @size: 30px) when (@type = edit) {
+  .action-button-base(@size);
+  margin-right: 15px;
+
+  &:after, &:before {
+    border-bottom: 2px solid transparent;
+  }
+
+  &:before {
+    border-right: 2px solid @color;
+    left: (@size / 2) - 2;
+  }
+
+  &:after {
+    border-left: 2px solid @color;
+    right: (@size / 2) - 2;
+  }
+}
+
+.action-button(@type, @color: #9E9E9E, @size: 30px) when (@type = delete) {
+  .action-button-base(@size);
+
+  &:after, &:before {
+    width: 2px;
+    left: (@size / 2) - 1;
+    background-color: @color;
+  }
+
+  &:before {
+    transform: rotate(90deg);
+  }
+}
+
+.surface-block() {
+  background-color: #FFFFFF;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.25);
 }
