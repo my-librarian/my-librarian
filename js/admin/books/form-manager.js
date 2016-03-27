@@ -3,7 +3,7 @@ var formManager = {
   bindAutocomplete: function () {
 
     $('.txt.subject').autocomplete({
-      source: '/app_data/subjects/get-all.php'
+      source: '/app_data/subjects/get-name.php'
     });
 
     $('.txt.author').autocomplete({
