@@ -14,7 +14,7 @@ function getFields() {
 }
 ?>
 
-<section class="list">
+<section class="book-list">
 
   <section class="add">
     <div class="add-book">
