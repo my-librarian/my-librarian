@@ -7,7 +7,7 @@ var formManager = {
     });
 
     $('.txt.author').autocomplete({
-      source: '/app_data/authors/get-all.php'
+      source: '/app_data/authors/get-name.php'
     });
   },
 
