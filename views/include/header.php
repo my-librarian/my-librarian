@@ -21,7 +21,9 @@
         </a>
         <nav class="right">
           <ul>
-            <li><a href="/admin/books">Log In</a></li>
+            <li><a href="/admin/books">Books</a></li>
+            <li><a href="/admin/authors">Authors</a></li>
+            <li><a href="/admin/Subjects">Subjects</a></li>
           </ul>
         </nav>
       </div>
