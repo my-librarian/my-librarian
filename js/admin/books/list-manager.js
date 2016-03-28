@@ -3,7 +3,7 @@ var listManager = {
   addBook: function (book) {
 
     var bookNode = listManager.createBook(book);
-    $('.list .books').append(bookNode);
+    $('.book-list .books').append(bookNode);
   },
 
   createBook: function (book) {

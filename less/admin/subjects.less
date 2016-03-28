@@ -1,39 +1,23 @@
 @import (reference) "../functions";
 
-.book-list {
-  .render-form(book);
+.subject-list {
+  .render-form(subject);
 
   section.add, section.edit {
 
-    .book .txt-group {
+    .subject .txt-group {
 
-      .accessno,
-      .rackno,
-      .adddate {
-        flex-basis: 100%;
-
-        @media (min-width: 640px) {
-          flex-basis: 100%/3;
-        }
-      }
-
-      .title,
-      .subject,
-      .author {
+      .name {
         flex-basis: 100%;
       }
     }
   }
 
-  .header, .books .book {
+  .header, .subjects .subject {
     display: flex;
     align-items: center;
 
-    .accessno {
-      flex-basis: 100px;
-    }
-
-    .title {
+    .name {
       flex-grow: 1;
     }
 
@@ -48,12 +32,8 @@
     margin-bottom: 10px;
     font-size: 0.8em;
 
-    .accessno, .title {
+    .name {
       padding-left: 25px;
-    }
-
-    .title {
-      text-align: center;
     }
 
     .actions {
@@ -61,22 +41,14 @@
     }
   }
 
-  .books {
+  .subjects {
     .surface-block();
 
-    .book {
+    .subject {
       border-bottom: 1px solid #ECECEC;
 
-      .accessno, .title {
+      .name {
         padding: 20px 0 20px 25px;
-      }
-
-      .accessno {
-        font-size: .9em;
-        color: #9E9E9E;
-      }
-
-      .title {
         font-weight: bold;
         cursor: pointer;
 

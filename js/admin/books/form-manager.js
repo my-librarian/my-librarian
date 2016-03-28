@@ -3,11 +3,11 @@ var formManager = {
   bindAutocomplete: function () {
 
     $('.txt.subject').autocomplete({
-      source: '/app_data/subject/get-all.php'
+      source: '/app_data/subjects/get-name.php'
     });
 
     $('.txt.author').autocomplete({
-      source: '/app_data/author/get-all.php'
+      source: '/app_data/authors/get-name.php'
     });
   },
 
